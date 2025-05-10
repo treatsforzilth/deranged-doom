@@ -21,6 +21,9 @@
 // Returns a 0-255 number
 //
 
+#include <stdlib.h>
+#include <time.h>
+
 static const unsigned char rndtable[256] = {
     0,   8, 109, 220, 222, 241, 149, 107,  75, 248, 254, 140,  16,  66 ,
     74,  21, 211,  47,  80, 242, 154,  27, 205, 128, 161,  89,  77,  36 ,
@@ -69,6 +72,11 @@ int Crispy_Random (void)
 
 void M_ClearRandom (void)
 {
+    srand(time(NULL));
+    for(int i = 0; i < 256; i++)
+    {
+      rndtable[i] = rand();
+    }
     rndindex = prndindex = 0;
     crndindex = 0;
 }
