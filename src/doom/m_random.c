@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-static const unsigned char rndtable[256] = {
+unsigned char rndtable[256] = {
     0,   8, 109, 220, 222, 241, 149, 107,  75, 248, 254, 140,  16,  66 ,
     74,  21, 211,  47,  80, 242, 154,  27, 205, 128, 161,  89,  77,  36 ,
     95, 110,  85,  48, 212, 140, 211, 249,  22,  79, 200,  50,  28, 188 ,
@@ -55,6 +55,12 @@ int P_Random (void)
 {
     prndindex = (prndindex+1)&0xff;
     return rndtable[prndindex];
+}
+
+int P_Range(int min, int max){
+  prndindex = (prndindex+1)&0xff;
+  int total = min + rndtable[rndindex] / (255 / (max - min + 1) + 1);
+  return total;
 }
 
 int M_Random (void)
