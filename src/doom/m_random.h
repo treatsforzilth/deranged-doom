@@ -31,6 +31,8 @@ int M_Random (void);
 // As M_Random, but used only by the play simulation.
 int P_Random (void);
 
+int P_Range(int min, int max);
+
 // [crispy] our own private random function
 int Crispy_Random (void);
 
