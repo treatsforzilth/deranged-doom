@@ -1054,7 +1054,7 @@ void A_Tracer (mobj_t* actor)
     mobj_t*	th;
     extern int demostarttic;
 		
-    if (P_Range(0, 100) < 15)
+    if (P_Random() > 127) // [deranged] 50% chance now >:3
 	return;
     
     // spawn a puff of smoke behind the rocket		
