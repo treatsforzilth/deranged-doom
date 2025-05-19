@@ -1026,6 +1026,9 @@ void A_BruisAttack (mobj_t* actor)
 //
 // A_SkelMissile
 //
+
+int GUIDED; // hacky way of randomly selecting guided missiles
+
 void A_SkelMissile (mobj_t* actor)
 {	
     mobj_t*	mo;
@@ -1041,6 +1044,8 @@ void A_SkelMissile (mobj_t* actor)
     mo->x += mo->momx;
     mo->y += mo->momy;
     mo->tracer = actor->target;
+
+    GUIDED = P_Random();
 }
 
 int	TRACEANGLE = 0xc000000;
@@ -1052,9 +1057,8 @@ void A_Tracer (mobj_t* actor)
     fixed_t	slope;
     mobj_t*	dest;
     mobj_t*	th;
-    extern int demostarttic;
 		
-    if (P_Random() > 127) // [deranged] 50% chance now >:3
+    if (GUIDED > 127) // [deranged] 50% chance now >:3
 	return;
     
     // spawn a puff of smoke behind the rocket		
