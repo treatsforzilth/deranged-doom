@@ -1252,9 +1252,9 @@ P_SpawnMissile
     th->target = source;	// where it came from
     an = R_PointToAngle2 (source->x, source->y, dest->x, dest->y);
 
-    // fuzzy player
-    if (dest->flags & MF_SHADOW)
-	an += P_SubRandom() << 20;
+    // [OLD TEXT: fuzzy player] NEW TEXT: nuh uh not anymore
+    if (true)
+	an += P_Random() << 20;
 
     th->angle = an;
     an >>= ANGLETOFINESHIFT;
