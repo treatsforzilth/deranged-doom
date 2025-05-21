@@ -1254,7 +1254,7 @@ P_SpawnMissile
 
     // [OLD TEXT: fuzzy player] NEW TEXT: nuh uh not anymore
     if (true)
-	an += P_Random() << 20;
+	an += P_SubRandom() << 20;
 
     th->angle = an;
     an >>= ANGLETOFINESHIFT;
@@ -1324,6 +1324,8 @@ P_SpawnPlayerMissile
 	}
     }
     }
+
+    an += (P_SubRandom() / 4) << 20;
 		
     x = source->x;
     y = source->y;

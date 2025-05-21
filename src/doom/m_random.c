@@ -57,13 +57,7 @@ int P_Random (void)
     return rndtable[prndindex];
 }
 
-int P_Range(int min, int max){
-  prndindex = (prndindex+1)&0xff;
-  int total = min + rndtable[rndindex] / (255 / (max - min + 1) + 1);
-  return total;
-}
-
-int M_Random (void)
+void M_Random (void)
 {
     rndindex = (rndindex+1)&0xff;
     return rndtable[rndindex];
